@@ -29,10 +29,10 @@ class topicController extends Controller
 
             $topic = toipc::get();
             $topic =  topicCollection::make($topic);
-            if(!auth()->user())
-            {
-                return $this->returnError('E000' ,'not authanticated' );
-            }
+            // if(!auth()->user())
+            // {
+            //     return $this->returnError('E000' ,'not authanticated' );
+            // }
             return $this->returnData('data' , $topic ,'all topics retived'.' ' .count($topic)  );
 
         }catch(\Exception $e){
@@ -48,10 +48,10 @@ class topicController extends Controller
         try{
             $topic = toipc::with('skill')->find($id);
             $topic = topicResource::make($topic);
-            if(!auth()->user())
-            {
-                return $this->returnError('E000' ,'not authanticated' );
-            }
+            // if(!auth()->user())
+            // {
+            //     return $this->returnError('E000' ,'not authanticated' );
+            // }
 
             return $this->returnData('data' , $topic ,' topic retived');
 
@@ -147,10 +147,10 @@ class topicController extends Controller
         try{
             $skill = skill::get();
             $skill = topicCollection::make($skill);
-            if(!auth()->user())
-            {
-                return $this->returnError('E000' ,'not authanticated' );
-            }
+            // if(!auth()->user())
+            // {
+            //     return $this->returnError('E000' ,'not authanticated' );
+            // }
             return $this->returnData('data' , $skill ,'all skills retived'.' ' .count($skill)  );
 
         }catch(\Exception $e){
@@ -165,10 +165,10 @@ class topicController extends Controller
         try{
             $skill = skill::find($id);
             $skill = topicResource::make($skill);
-            if(!auth()->user())
-            {
-                return $this->returnError('E000' ,'not authanticated' );
-            }
+            // if(!auth()->user())
+            // {
+            //     return $this->returnError('E000' ,'not authanticated' );
+            // }
             return $this->returnData('data' , $skill ,' skill retived');
 
         }catch(\Exception $e){
@@ -181,10 +181,10 @@ class topicController extends Controller
         try{
             $data = userProfile::where('skill_id', $id )->with('user')->get();
             $data = profileResource::collection($data);
-            if(!auth()->user())
-            {
-              return $this->returnError('E000' ,'not authanticated' );
-            }
+            // if(!auth()->user())
+            // {
+            //   return $this->returnError('E000' ,'not authanticated' );
+            // }
             if($data){
                 return $this->returnData('data' , $data , 'all retrived'. "  "  . (count($data)));
             }

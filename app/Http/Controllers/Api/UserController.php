@@ -44,10 +44,10 @@ class UserController extends Controller
     // show my profile 
     public function myProfile(){
       try{
-        if(!auth()->user())
-        {
-          return $this->returnError('E000' ,'not authanticated' );
-        }
+        // if(!auth()->user())
+        // {
+        //   return $this->returnError('E000' ,'not authanticated' );
+        // }
         $user = userResource::make(auth()->user()) ;
         $user->profile;
         return $this->returnData('data' , $user , 'my profile data' );
@@ -118,10 +118,10 @@ class UserController extends Controller
       try{
         $user = User::get();
         $user = userResource::collection($user);
-        if(!auth()->user())
-          {
-             return $this->returnError('E000' ,'not authanticated' );
-          }
+        // if(!auth()->user())
+        //   {
+        //      return $this->returnError('E000' ,'not authanticated' );
+        //   }
           return $this->returnData('data' , $user ,'all users retived' );
       }catch(\Exception $e){
         return $this->returnError('E001' ,$e->getMessage() );
@@ -135,10 +135,10 @@ class UserController extends Controller
           $user = User::find($id);
           $user = userResource::make($user);
           // $profiles = $user->profile ;
-          if(!auth()->user())
-          {
-            return $this->returnError('E000' ,'not authanticated' );
-          }
+          // if(!auth()->user())
+          // {
+          //   return $this->returnError('E000' ,'not authanticated' );
+          // }
           if(isset($user))
           {
             return $this->returnData('data' , $user ,' user Details' );

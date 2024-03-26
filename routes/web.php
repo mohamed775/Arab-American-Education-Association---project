@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\mailTest;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
+    Mail::send(new mailTest());
     return view('welcome');
 });
 
