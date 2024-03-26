@@ -1,0 +1,1161 @@
+{
+	"info": {
+		"_postman_id": "000c37a9-7b6a-4c92-b041-a2f9046adab0",
+		"name": "AAS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30317648"
+	},
+	"item": [
+		{
+			"name": "auth2",
+			"item": [
+				{
+					"name": "rigester",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/rigester?name=rana&email=rana@gmail.com&password=123456&password_confirmation=123456",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"rigester"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "rana"
+								},
+								{
+									"key": "email",
+									"value": "rana@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login?email=zakaryam648@gmail.com&password=123456",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "zakaryam648@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzEwODAwODk0LCJleHAiOjE3MTA4MDQ0OTQsIm5iZiI6MTcxMDgwMDg5NCwianRpIjoibFBCWUtRQVAyNW5ucEc5RiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KitQmokWuJfBphp8cTn5JnN_iDtyRCvsFH49gh4CEAk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/logout",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"logout"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzEwODAwODk0LCJleHAiOjE3MTA4MDQ0OTQsIm5iZiI6MTcxMDgwMDg5NCwianRpIjoibFBCWUtRQVAyNW5ucEc5RiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KitQmokWuJfBphp8cTn5JnN_iDtyRCvsFH49gh4CEAk",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refreshToken",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzEwODc5ODU0LCJleHAiOjE3MTA4ODM0NTQsIm5iZiI6MTcxMDg3OTg1NCwianRpIjoiaGxJR1lxNjhQQVNqa09XUiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.JF3lsO1BJZDE6q30LJ34IPawZH0Pu8g3Cw2YskW2J0Q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/refresh-token?access_token=Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzEwODc5ODU0LCJleHAiOjE3MTA4ODM0NTQsIm5iZiI6MTcxMDg3OTg1NCwianRpIjoiaGxJR1lxNjhQQVNqa09XUiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.JF3lsO1BJZDE6q30LJ34IPawZH0Pu8g3Cw2YskW2J0Q",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"refresh-token"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzEwODc5ODU0LCJleHAiOjE3MTA4ODM0NTQsIm5iZiI6MTcxMDg3OTg1NCwianRpIjoiaGxJR1lxNjhQQVNqa09XUiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.JF3lsO1BJZDE6q30LJ34IPawZH0Pu8g3Cw2YskW2J0Q"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sendEmail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzEwODc0NzE5LCJleHAiOjE3MTA4NzgzMTksIm5iZiI6MTcxMDg3NDcxOSwianRpIjoiQVgwcE1RMTBtWlNUaEdYeCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.8eZjxIhUp5I6IZr2gW6Ju2Kuz9jRPC3k157knTzhUNk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/send_verify_mail/zakaryam648@gmail.com",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"send_verify_mail",
+								"zakaryam648@gmail.com"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzEwODAwODk0LCJleHAiOjE3MTA4MDQ0OTQsIm5iZiI6MTcxMDgwMDg5NCwianRpIjoibFBCWUtRQVAyNW5ucEc5RiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KitQmokWuJfBphp8cTn5JnN_iDtyRCvsFH49gh4CEAk",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "topic-skills",
+			"item": [
+				{
+					"name": "all topic",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMzE4MDU1LCJleHAiOjE3MTEzMjE2NTUsIm5iZiI6MTcxMTMxODA1NSwianRpIjoibVh2NlhnenNGTmZwZEdHTCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.juDQC8UIbrDlIt9YZTkL5e21GPLnqDqnwZhUrnDMt68",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/topic",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"topic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add topic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMzE4MDU1LCJleHAiOjE3MTEzMjE2NTUsIm5iZiI6MTcxMTMxODA1NSwianRpIjoibVh2NlhnenNGTmZwZEdHTCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.juDQC8UIbrDlIt9YZTkL5e21GPLnqDqnwZhUrnDMt68",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "art",
+									"type": "text"
+								},
+								{
+									"key": "img",
+									"type": "file",
+									"src": "postman-cloud:///1eeea2b0-dd72-4180-8218-75e6225a4def"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/topic",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"topic"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Programming",
+									"disabled": true
+								},
+								{
+									"key": "img",
+									"value": "000000000000000000000000000000.png",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update topic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMzE4MDU1LCJleHAiOjE3MTEzMjE2NTUsIm5iZiI6MTcxMTMxODA1NSwianRpIjoibVh2NlhnenNGTmZwZEdHTCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.juDQC8UIbrDlIt9YZTkL5e21GPLnqDqnwZhUrnDMt68",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "En",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "img",
+									"type": "file",
+									"src": "postman-cloud:///1eeea330-3fdf-4230-9cce-4eac26e586b2"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/topic/10?name=En",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"topic",
+								"10"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "En"
+								},
+								{
+									"key": "img",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete topic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMzE4MDU1LCJleHAiOjE3MTEzMjE2NTUsIm5iZiI6MTcxMTMxODA1NSwianRpIjoibVh2NlhnenNGTmZwZEdHTCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.juDQC8UIbrDlIt9YZTkL5e21GPLnqDqnwZhUrnDMt68",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "dataAnalysis",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "img",
+									"type": "file",
+									"src": "postman-cloud:///1eeea2b0-dd72-4180-8218-75e6225a4def",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/topic/9",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"topic",
+								"9"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Programming",
+									"disabled": true
+								},
+								{
+									"key": "img",
+									"value": "000000000000000000000000000000.png",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "one-topic - with - allSkills",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMjAxOTgxLCJleHAiOjE3MTEyMDU1ODEsIm5iZiI6MTcxMTIwMTk4MSwianRpIjoiQTMwSHNNTUpzUGFsdXFKNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.0kE-EqMDpcqgDH3z9_ej7R0ZYm_6qGhW1hEIwM4UCfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/topic/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"topic",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gellSkills",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMjAxOTgxLCJleHAiOjE3MTEyMDU1ODEsIm5iZiI6MTcxMTIwMTk4MSwianRpIjoiQTMwSHNNTUpzUGFsdXFKNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.0kE-EqMDpcqgDH3z9_ej7R0ZYm_6qGhW1hEIwM4UCfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/skill",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"skill"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "one-skill by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMjAxOTgxLCJleHAiOjE3MTEyMDU1ODEsIm5iZiI6MTcxMTIwMTk4MSwianRpIjoiQTMwSHNNTUpzUGFsdXFKNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.0kE-EqMDpcqgDH3z9_ej7R0ZYm_6qGhW1hEIwM4UCfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/skill/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"skill",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add skill",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMzE4MDU1LCJleHAiOjE3MTEzMjE2NTUsIm5iZiI6MTcxMTMxODA1NSwianRpIjoibVh2NlhnenNGTmZwZEdHTCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.juDQC8UIbrDlIt9YZTkL5e21GPLnqDqnwZhUrnDMt68",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "art",
+									"type": "text"
+								},
+								{
+									"key": "img",
+									"type": "file",
+									"src": "postman-cloud:///1eeea2b0-dd72-4180-8218-75e6225a4def"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/topic",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"topic"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Programming",
+									"disabled": true
+								},
+								{
+									"key": "img",
+									"value": "000000000000000000000000000000.png",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete skill",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMzE4MDU1LCJleHAiOjE3MTEzMjE2NTUsIm5iZiI6MTcxMTMxODA1NSwianRpIjoibVh2NlhnenNGTmZwZEdHTCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.juDQC8UIbrDlIt9YZTkL5e21GPLnqDqnwZhUrnDMt68",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "dataAnalysis",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "img",
+									"type": "file",
+									"src": "postman-cloud:///1eeea2b0-dd72-4180-8218-75e6225a4def",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/topic/9",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"topic",
+								"9"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Programming",
+									"disabled": true
+								},
+								{
+									"key": "img",
+									"value": "000000000000000000000000000000.png",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update skill",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMzI2NjM4LCJleHAiOjE3MTEzMzAyMzgsIm5iZiI6MTcxMTMyNjYzOCwianRpIjoiQVhXRFhSTzFCMXFNUE91UCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.r6yFYWkv0MlzuM_95TYIl6uQrXSr7kGyk5_VS_GltcQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "En",
+									"type": "text"
+								},
+								{
+									"key": "img",
+									"type": "file",
+									"src": "postman-cloud:///1eeea330-3fdf-4230-9cce-4eac26e586b2"
+								},
+								{
+									"key": "topic_id",
+									"value": "7",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/skill/1?name=asdasdsa&img=&topic_id=7",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"skill",
+								"1"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "asdasdsa"
+								},
+								{
+									"key": "img",
+									"value": ""
+								},
+								{
+									"key": "topic_id",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "getUsers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMjAxOTgxLCJleHAiOjE3MTEyMDU1ODEsIm5iZiI6MTcxMTIwMTk4MSwianRpIjoiQTMwSHNNTUpzUGFsdXFKNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.0kE-EqMDpcqgDH3z9_ej7R0ZYm_6qGhW1hEIwM4UCfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userBySkill",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMjAxOTgxLCJleHAiOjE3MTEyMDU1ODEsIm5iZiI6MTcxMTIwMTk4MSwianRpIjoiQTMwSHNNTUpzUGFsdXFKNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.0kE-EqMDpcqgDH3z9_ej7R0ZYm_6qGhW1hEIwM4UCfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/skill/3/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"skill",
+								"3",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userbyid",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMjAxOTgxLCJleHAiOjE3MTEyMDU1ODEsIm5iZiI6MTcxMTIwMTk4MSwianRpIjoiQTMwSHNNTUpzUGFsdXFKNyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.0kE-EqMDpcqgDH3z9_ej7R0ZYm_6qGhW1hEIwM4UCfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "myProfile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMjI4Nzk4LCJleHAiOjE3MTEyMzIzOTgsIm5iZiI6MTcxMTIyODc5OCwianRpIjoicW8xWm4ySDVzRDFXeVVMcSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.I9fS9H6LBjRtdBSbt2aNozXNSk5sdr_neo-JX14U1CM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzEwODc5ODU0LCJleHAiOjE3MTA4ODM0NTQsIm5iZiI6MTcxMDg3OTg1NCwianRpIjoiaGxJR1lxNjhQQVNqa09XUiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.JF3lsO1BJZDE6q30LJ34IPawZH0Pu8g3Cw2YskW2J0Q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/profile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzEwODAwODk0LCJleHAiOjE3MTA4MDQ0OTQsIm5iZiI6MTcxMDgwMDg5NCwianRpIjoibFBCWUtRQVAyNW5ucEc5RiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KitQmokWuJfBphp8cTn5JnN_iDtyRCvsFH49gh4CEAk",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userprofile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMjkxNjcwLCJleHAiOjE3MTEyOTUyNzAsIm5iZiI6MTcxMTI5MTY3MCwianRpIjoieHBIU0tCajY4QWtKQWE4TSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.jtLIksuGmEyZU3h21OE-psvJ1Z7IOrMhkrxhPWHKvCc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzEwODc5ODU0LCJleHAiOjE3MTA4ODM0NTQsIm5iZiI6MTcxMDg3OTg1NCwianRpIjoiaGxJR1lxNjhQQVNqa09XUiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.JF3lsO1BJZDE6q30LJ34IPawZH0Pu8g3Cw2YskW2J0Q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/3/profile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"3",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzEwODAwODk0LCJleHAiOjE3MTA4MDQ0OTQsIm5iZiI6MTcxMDgwMDg5NCwianRpIjoibFBCWUtRQVAyNW5ucEc5RiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KitQmokWuJfBphp8cTn5JnN_iDtyRCvsFH49gh4CEAk",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMzI4MjkwLCJleHAiOjE3MTEzMzE4OTAsIm5iZiI6MTcxMTMyODI5MCwianRpIjoiWEZ5d0FpWXg5UVZoR2FCWCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.ncEmjQhNypcW-CIs__RJ3GOPjqLxGENI4KT1VcDQyhk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "mostafa",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "mostafa@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "img",
+									"type": "file",
+									"src": "/E:/last img/IMG_1359.JPG"
+								},
+								{
+									"key": "coverImg",
+									"type": "file",
+									"src": "/E:/last img/IMG_1363.JPG"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Programming",
+									"disabled": true
+								},
+								{
+									"key": "img",
+									"value": "000000000000000000000000000000.png",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMzE4MDU1LCJleHAiOjE3MTEzMjE2NTUsIm5iZiI6MTcxMTMxODA1NSwianRpIjoibVh2NlhnenNGTmZwZEdHTCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.juDQC8UIbrDlIt9YZTkL5e21GPLnqDqnwZhUrnDMt68",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "En",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "img",
+									"type": "file",
+									"src": "postman-cloud:///1eeea330-3fdf-4230-9cce-4eac26e586b2"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"10"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "En",
+									"disabled": true
+								},
+								{
+									"key": "img",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzExMzI4MjkwLCJleHAiOjE3MTEzMzE4OTAsIm5iZiI6MTcxMTMyODI5MCwianRpIjoiWEZ5d0FpWXg5UVZoR2FCWCIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.ncEmjQhNypcW-CIs__RJ3GOPjqLxGENI4KT1VcDQyhk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "dataAnalysis",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "img",
+									"type": "file",
+									"src": "postman-cloud:///1eeea2b0-dd72-4180-8218-75e6225a4def",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"1"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Programming",
+									"disabled": true
+								},
+								{
+									"key": "img",
+									"value": "000000000000000000000000000000.png",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "url"
+		}
+	]
+}
