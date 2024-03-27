@@ -71,7 +71,7 @@ Route::middleware('auth:api')->group(function(){
 
 // route for topic and skills 
 
-Route::middleware('auth:api')->group(function(){
+
 
     Route::get('/topic' , [topicController::class , 'getAllTopic']);
     Route::Post('/topic' , [topicController::class , 'addTopic']);
@@ -88,5 +88,5 @@ Route::middleware('auth:api')->group(function(){
     Route::delete('/skill/{id}' , [topicController::class , 'deleteSkill']);
     Route::put('/skill/{id}' , [topicController::class , 'updateSkill']);
 
-});
+
 
