@@ -116,8 +116,8 @@ class UserController extends Controller
     public function getAllUser(){
 
       try{
-        $user = User::get();
-        $user = userResource::collection($user);
+        $user = User::paginate(8);
+        // $user = userResource::collection($user);
         // if(!auth()->user())
         //   {
         //      return $this->returnError('E000' ,'not authanticated' );

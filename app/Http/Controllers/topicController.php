@@ -27,8 +27,8 @@ class topicController extends Controller
         try{
             
 
-            $topic = toipc::get();
-            $topic =  topicCollection::make($topic);
+            $topic = toipc::paginate(8);
+            // $topic =  topicCollection::make($topic);    
             // if(!auth()->user())
             // {
             //     return $this->returnError('E000' ,'not authanticated' );
@@ -52,7 +52,6 @@ class topicController extends Controller
             // {
             //     return $this->returnError('E000' ,'not authanticated' );
             // }
-
             return $this->returnData('data' , $topic ,' topic retived');
 
         }catch(\Exception $e){
@@ -145,8 +144,8 @@ class topicController extends Controller
 
     public function getAllSkill(){
         try{
-            $skill = skill::get();
-            $skill = topicCollection::make($skill);
+            $skill = skill::paginate(8);
+            // $skill = topicCollection::make($skill);
             // if(!auth()->user())
             // {
             //     return $this->returnError('E000' ,'not authanticated' );

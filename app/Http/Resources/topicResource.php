@@ -17,7 +17,7 @@ class topicResource extends JsonResource
         return[
             'id' => $this->id ,
             'name' => $this->Name ,
-            'img' => $this->img ,
+            'img' =>asset($this->img ) ,
             'skill' => topicResource::collection($this->whenLoaded('skill'))
         ];
 
