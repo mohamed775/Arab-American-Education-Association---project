@@ -56,8 +56,7 @@ Route::group(['middleware' => 'api'] , function(){
 
 
 // user route
-Route::middleware('auth:api')->group(function(){
-
+Route::middleware(['auth:api' , 'cors'])->group(function(){
     
     Route::Post('/user' , [UserController::class , 'addUser']);
     Route::delete('/user/{id}' , [UserController::class , 'deleteUser']);
@@ -69,14 +68,15 @@ Route::middleware('auth:api')->group(function(){
     Route::delete('/skill/{id}' , [topicController::class , 'deleteSkill']);
     Route::put('/skill/{id}' , [topicController::class , 'updateSkill']);
 
-
 });
 
 // get user non auth 
 
-Route::get('/user' , [UserController::class , 'getAllUser']);
-Route::get('/user/{id}' , [UserController::class , 'getUserById']);
-Route::get('/user/{id}/profile' , [UserController::class , 'userProfile']);
+Route::middleware(['cors'])->group(function () {
+
+    Route::get('/user' , [UserController::class , 'getAllUser']);
+    Route::get('/user/{id}' , [UserController::class , 'getUserById']);
+    Route::get('/user/{id}/profile' , [UserController::class , 'userProfile']);
 
 
 
@@ -93,6 +93,9 @@ Route::get('/user/{id}/profile' , [UserController::class , 'userProfile']);
     Route::get('/skill' , [topicController::class , 'getAllSkill']);
     Route::get('/skill/{id}' , [topicController::class , 'getSkill']);
     Route::get('/skill/{id}/users' , [topicController::class , 'getUserBySkill']);
+
+});
+  
 
 
 
