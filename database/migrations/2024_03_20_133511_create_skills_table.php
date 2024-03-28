@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name_en')->unique();
+            $table->string('name_ar')->unique();
             $table->bigInteger('topic_id')->unsigned();
             $table->string('img')->nullable();
             $table->timestamps();
