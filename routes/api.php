@@ -66,6 +66,9 @@ Route::group(['middleware' => ['changeLang' , 'cors']] , function(){
   Route::get('/skill/search' , [skillController::class , 'search']);// search for specific skill
 
 
+
+
+
 });
   
 
