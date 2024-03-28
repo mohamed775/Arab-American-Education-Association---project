@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Http\Traits\GeneralTrait;
+use App\Models\admin;
 use Closure;
 use Exception;
 use Illuminate\Http\Request;
@@ -20,11 +21,19 @@ class CheckAdminToken
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = null ;
 
         try{
-            $user = JWTAuth::parseToken()->authenticate();
-        }catch(\Exception $e){
+            if (isset($request->token) && $request->token != null)
+            {
+                $admin = admin::where('token', $request->token)->first();
+                if($admin != null)
+                    return $next($request);
+            }
+            return response()->json([
+                'error' => 'Unauthenticate Admin'
+                ], 
+                401);    
+            }catch(\Exception $e){
             if($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException)
             {
                 return $this->returnError('E3001','invalid_Token');
@@ -38,8 +47,5 @@ class CheckAdminToken
             }
         }
 
-        if(!$user)
-             return $this->returnError('E3001','unAuthnticated');
-        return $next($request);
     }
 }

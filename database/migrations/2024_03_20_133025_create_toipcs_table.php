@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('toipcs', function (Blueprint $table) {
             $table->id()->unique();
-            $table->string('Name')->unique();
-            $table->string('img');
+            $table->string('name')->unique();
+            $table->string('img')->nullable();
             $table->timestamps();
         });
     }

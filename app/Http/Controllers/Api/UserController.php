@@ -18,7 +18,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\URL;
 use Auth;
 
-class UserController extends Controller
+class UserController extends authController 
 {
 
     use GeneralTrait ;
@@ -44,10 +44,10 @@ class UserController extends Controller
     // show my profile 
     public function myProfile(){
       try{
-        // if(!auth()->user())
-        // {
-        //   return $this->returnError('E000' ,'not authanticated' );
-        // }
+        if(!auth()->user())
+        {
+          return $this->returnError('E000' ,'not authanticated' );
+        }
         $user = userResource::make(auth()->user()) ;
         $user->profile;
         return $this->returnData('data' , $user , 'my profile data' );
@@ -113,16 +113,15 @@ class UserController extends Controller
 
 
 //  get all user 
+
     public function getAllUser(){
 
       try{
-        $user = User::paginate(8);
-        // $user = userResource::collection($user);
-        // if(!auth()->user())
-        //   {
-        //      return $this->returnError('E000' ,'not authanticated' );
-        //   }
-          return $this->returnData('data' , $user ,'all users retived' );
+
+        $user = User::select()->paginate(PAGINATION_COUNTER);
+        
+        return $this->returnData('data' , $user ,'all users retived' );
+
       }catch(\Exception $e){
         return $this->returnError('E001' ,$e->getMessage() );
       }
@@ -132,18 +131,14 @@ class UserController extends Controller
     // get one user 
     public function getUserById($id){
       try{
+
           $user = User::find($id);
-          $user = userResource::make($user);
-          // $profiles = $user->profile ;
-          // if(!auth()->user())
-          // {
-          //   return $this->returnError('E000' ,'not authanticated' );
-          // }
+          
           if(isset($user))
           {
-            return $this->returnData('data' , $user ,' user Details' );
+            return $this->returnData('data' , userResource::make($user) ,' user Details' );
           }
-          return $this->returnError('E001' ,'user not found' );
+          return $this->returnError('404' ,'user not found' );
 
       }catch(\Exception $e){
                  return $this->returnError('E001' ,$e->getMessage() );
@@ -168,18 +163,15 @@ class UserController extends Controller
                   return $this->returnError('E000' , $validate->errors());
               }
       
-              if(Request()->has('img')){
-                  $imagePath = $request->img->store('userImages','public');
-                  $imageCoverPath = $request->coverImg->store('userImages','public');
-                  $image =  '/storage/'.$imagePath ;
-                  $coverImage = '/storage/'.$imageCoverPath ;
-              }
+              $img = $this->getImage($request);
+              $cover = $this->getCoverImage($request);
+             
               $user = new User();
               $user->name = $request->name;
               $user->email = $request->email;
               $user->password =Hash::make( $request->password);
-              $user->img = $image;
-              $user->coverImg = $coverImage;
+              $user->img = $img;
+              $user->coverImg = $cover;
               $user->save();
               return $this->returnData('user' , userResource::make($user) , 'user added success');
       }catch(\Exception $e){
@@ -208,7 +200,7 @@ class UserController extends Controller
 
 
   // update user 
-  public function updateSkill(Request $request,$id)
+  public function updateUser(Request $request,$id)
   {
       try{
         $validate=  Validator::make($request->all(),[
@@ -223,27 +215,40 @@ class UserController extends Controller
               return $this->returnError('E000' , $validate->errors());
           }
           $user = User::find($id);
-          
-          if(Request()->has('img')){
-            $imagePath = $request->img->store('userImages','public');
-            $imageCoverPath = $request->coverImg->store('userImages','public');
-            $image =  '/storage/'.$imagePath ;
-            $coverImage = '/storage/'.$imageCoverPath ;
-        }
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->img = $image;
-        $user->coverImg = $coverImage;
-        $user->save();
 
-        return $this->returnData('user' , userResource::make($user) , 'user added success');
-
+          if($user){
+            $img = $this->getImage($request);
+            $cover = $this->getCoverImage($request);
+  
+           $user = new User();
+           $user->name = $request->name;
+           $user->email = $request->email;
+           $user->password = $request->password;
+           $user->img = $img;
+           $user->coverImg = $cover;
+           $user->save();
+  
+          return $this->returnData('user' , userResource::make($user) , 'user added success');
+          }
+          return $this->returnError('404' ,'user not found' );
       }catch(\Exception $e){
           return $this->returnError('E001' ,$e->getMessage() );
       }
   }
+
+  public function search()
+    {
+        $search = request('user');
+        $user = User::select()->where(function ($query) use ($search) {
+            $query->where('name', 'LIKE', '%' . $search . '%');
+        })->paginate(PAGINATION_COUNTER);
+        return response()->json([
+            $user,
+            'code'=> 200],
+            200);
+    }
+
+  
   
 
 }

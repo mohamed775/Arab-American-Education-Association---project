@@ -13,10 +13,17 @@ return new class extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
-            $table->string('Name');
-            $table->string('img');
-            $table->foreignId('topic_id')->constrained('toipcs','id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('name')->unique();
+            $table->bigInteger('topic_id')->unsigned();
+            $table->string('img')->nullable();
             $table->timestamps();
+
+
+            $table->foreign('topic_id')
+                  ->references('id')->on('toipcs')
+                   ->cascadeOnDelete()
+                   ->cascadeOnUpdate();
+
         });
     }
 
