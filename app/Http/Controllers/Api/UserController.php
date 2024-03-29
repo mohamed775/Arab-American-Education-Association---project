@@ -119,8 +119,8 @@ class UserController extends authController
       try{
 
         $user = User::select()->paginate(8);
-        
-        return $this->returnData('data' , $user ,'all users retived' );
+        $totalPage = $user->lastPage();
+        return $this->returnData('data' , $user ,'all users retived'  ,$totalPage )  ;
 
       }catch(\Exception $e){
         return $this->returnError('E001' ,$e->getMessage() );

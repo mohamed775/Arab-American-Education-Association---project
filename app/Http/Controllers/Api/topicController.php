@@ -22,7 +22,8 @@ class topicController extends Controller
     public function getAllTopic(){
         try{
             $topic = toipc::select('id' ,'name_'.app()->getLocale() , 'img')->paginate(8);
-            return $this->returnData('data' , $topic ,'all topics retived'.' ' .count($topic)  );
+            $totalPage = $topic->lastPage();
+            return $this->returnData('data' , $topic ,'all topics retived'.' ' .count($topic),$totalPage );
 
         }catch(\Exception $e){
             return $this->returnError('E001' ,$e->getMessage() );

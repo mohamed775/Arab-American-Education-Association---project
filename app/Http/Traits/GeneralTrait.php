@@ -27,13 +27,14 @@ trait GeneralTrait
 
      }
 
-     public function returnData($key , $value , $msg="" ){
+     public function returnData($key , $value , $msg="" , $totalPage = null){
 
         return response()->json([
             'status' => true ,
             'errNum' => '' ,
             'msg' => $msg ,
             $key => $value,
+            'totalPage' => $totalPage
         ]);
 
      }
