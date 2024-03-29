@@ -147,7 +147,7 @@ class skillController extends Controller
         $search = request('skill');
         $skill = skill::select()->where(function ($query) use ($search) {
             $query->where('name_'.app()->getLocale(), 'LIKE', '%' . $search . '%');
-        })->paginate(PAGINATION_COUNTER);
+        })->paginate(8);
         return response()->json([
             $skill,
             'code'=> 200],

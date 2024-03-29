@@ -133,7 +133,7 @@ class topicController extends Controller
         $search = request('topic');
         $topic = toipc::select()->where(function ($query) use ($search) {
             $query->where('name_'.app()->getLocale(), 'LIKE', '%' . $search . '%');
-        })->paginate(PAGINATION_COUNTER);
+        })->paginate(8);
         return response()->json([
             $topic,
             'code'=> 200],
