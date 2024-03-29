@@ -162,10 +162,10 @@ class UserController extends authController
               {
                   return $this->returnError('E000' , $validate->errors());
               }
-      
+
               $img = $this->getImage($request);
               $cover = $this->getCoverImage($request);
-             
+
               $user = new User();
               $user->name = $request->name;
               $user->email = $request->email;

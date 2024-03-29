@@ -34,9 +34,15 @@ class authController extends Controller
             return $this->returnError('E000' , $valideted->errors());
         }
 
-        $img = $this->getImage($request);
-        $coverImg = $this->getCoverImage($request);
+        if(Request()->has('img'))
+            $img = $this->getImage($request);
+        else  $img = null;
+        
+        if(Request()->has('coverImg'))
+            $coverImg = $this->getCoverImage($request);
+        else  $coverImg = null;
 
+        
         $user = User::create([
              'name' =>$request->name ,
              'email' => $request->email,
