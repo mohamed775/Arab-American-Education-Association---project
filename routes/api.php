@@ -68,7 +68,6 @@ Route::group(['middleware' => ['changeLang' , 'cors']] , function(){
 
 
 
-
 });
   
 

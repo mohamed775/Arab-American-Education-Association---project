@@ -19,7 +19,7 @@ class skillController extends Controller
 
     public function getAllSkill(){
         try{
-            $skill = skill::select('id' ,'name_'.app()->getLocale() , 'img' , 'topic_id')->paginate(8);
+            $skill = skill::select()->paginate(8);
             $totalPage = $skill->lastPage();
             return $this->returnData('data' , $skill ,'all skills retived'.' ' .count($skill) ,$totalPage)  ;
 
