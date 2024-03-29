@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\profileResource;
 use App\Http\Resources\topicResource;
+use App\Http\Traits\GeneralTrait;
 use App\Models\skill;
 use App\Models\userProfile;
 use Illuminate\Http\Request;
@@ -12,11 +13,13 @@ use Illuminate\Support\Facades\Validator;
 
 class skillController extends Controller
 {
+    use GeneralTrait;
+
     // get all skill 
 
     public function getAllSkill(){
         try{
-            $skill = skill::select()->paginate(PAGINATION_COUNTER);
+            $skill = skill::select('id' ,'name_'.app()->getLocale() , 'img' , 'topic_id')->paginate(8);
             return $this->returnData('data' , $skill ,'all skills retived'.' ' .count($skill)  );
 
         }catch(\Exception $e){
@@ -46,7 +49,7 @@ class skillController extends Controller
 
     public function getUserBySkill($id){
         try{
-            $data = userProfile::where('skill_id', $id )->with('user')->paginate(PAGINATION_COUNTER);
+            $data = userProfile::where('skill_id', $id )->with('user')->paginate(8);
             $data = profileResource::collection($data);  
             if($data){
                 return $this->returnData('data' , $data , 'all retrived'. "  "  . (count($data)));
@@ -63,7 +66,8 @@ class skillController extends Controller
         {
             try{
                 $validate=  Validator::make($request->all(),[
-                    'name' => 'required|string|min:2|max:100 |unique:skills',
+                    'name_en' => 'required|string|min:2|max:100 |unique:toipcs',
+                    'name_ar' => 'required|string|min:2|max:100 |unique:toipcs',
                     'img' => 'required|image',
                     'topic_id' => 'required|int'
                     ]);
@@ -75,7 +79,8 @@ class skillController extends Controller
                     $img = $this->getImage($request);
 
                     $skill = new skill();
-                    $skill->Name = $request->name;
+                    $skill->name_en = $request->name_en;
+                    $skill->name_ar = $request->name_ar;
                     $skill->img = $img;
                     $skill->topic_id = $request->topic_id;
                     $skill->save();
@@ -109,7 +114,8 @@ class skillController extends Controller
         {
             try{
                 $validate=  Validator::make($request->all(),[
-                    'name' => 'required|string|min:2|max:100 |unique:skills',
+                    'name_en' => 'required|string|min:2|max:100 |unique:toipcs',
+                    'name_ar' => 'required|string|min:2|max:100 |unique:toipcs',
                     'img' => 'required|image',
                     'topic_id' => 'required|int'
                     ]);
@@ -121,7 +127,8 @@ class skillController extends Controller
                 $img = $this->getImage($request);
                 $skill = skill::find($id);
                 if($skill){
-                    $skill->Name = $request->name ;
+                    $skill->name_en = $request->name_en;
+                    $skill->name_ar = $request->name_ar;
                     $skill->topic_id = $request->topic_id;
                     $skill->img = $img ;
                     $skill->save();
@@ -139,7 +146,7 @@ class skillController extends Controller
     {
         $search = request('skill');
         $skill = skill::select()->where(function ($query) use ($search) {
-            $query->where('name', 'LIKE', '%' . $search . '%');
+            $query->where('name_'.app()->getLocale(), 'LIKE', '%' . $search . '%');
         })->paginate(PAGINATION_COUNTER);
         return response()->json([
             $skill,

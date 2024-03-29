@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use PDO;
 
 class authController extends Controller
 {
@@ -24,8 +25,8 @@ class authController extends Controller
          'name' => 'required|string|min:2|max:100',
          'email' => 'required|string|email|max:100|unique:users',
          'password' => 'required|confirmed|min:6|string' ,
-         'img' => 'nullable|image',
-         'coverImg' => 'nullable|image'
+         'img' => 'image',
+         'coverImg' => 'image'
         ] );
  
         if($valideted->fails())

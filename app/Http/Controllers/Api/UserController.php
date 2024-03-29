@@ -118,7 +118,7 @@ class UserController extends authController
 
       try{
 
-        $user = User::select()->paginate(PAGINATION_COUNTER);
+        $user = User::select()->paginate(8);
         
         return $this->returnData('data' , $user ,'all users retived' );
 
@@ -133,7 +133,7 @@ class UserController extends authController
       try{
 
           $user = User::find($id);
-          
+          $user->profile ;
           if(isset($user))
           {
             return $this->returnData('data' , userResource::make($user) ,' user Details' );

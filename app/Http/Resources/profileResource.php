@@ -15,9 +15,6 @@ class profileResource extends JsonResource
     public function toArray(Request $request)
     {
         return[
-            "img"=>  $this->img,
-            "cover" =>  $this->coverImg,
-            "coins"=>  $this->coins,
             "rating"=>  $this->rating,  
             "user" => userResource::make($this->whenLoaded('user'))    
         ];

@@ -21,7 +21,7 @@ class topicController extends Controller
 
     public function getAllTopic(){
         try{
-            $topic = toipc::select()->paginate(PAGINATION_COUNTER);
+            $topic = toipc::select('id' ,'name_'.app()->getLocale() , 'img')->paginate(8);
             return $this->returnData('data' , $topic ,'all topics retived'.' ' .count($topic)  );
 
         }catch(\Exception $e){
@@ -54,7 +54,8 @@ class topicController extends Controller
     {
         try{
             $validate=  Validator::make($request->all(),[
-                'name' => 'required|string|min:2|max:100 |unique:toipcs',
+                'name_en' => 'required|string|min:2|max:100 |unique:toipcs',
+                'name_ar' => 'required|string|min:2|max:100 |unique:toipcs',
                 'img' => 'required|image',
                 ]);
 
@@ -65,7 +66,8 @@ class topicController extends Controller
 
                 $img = $this->getImage($request);
                 $topic = new toipc();
-                $topic->Name = $request->name;
+                $topic->name_en = $request->name_en;
+                $topic->name_ar = $request->name_ar;
                 $topic->img = $img;
                 $topic->save();
 
@@ -99,7 +101,8 @@ class topicController extends Controller
     {
         try{
             $validate=  Validator::make($request->all(),[
-                'name' => 'required|string|min:2|max:100 |unique:toipcs',
+                'name_en' => 'required|string|min:2|max:100 |unique:toipcs',
+                'name_ar' => 'required|string|min:2|max:100 |unique:toipcs',
                 'img' => 'required|image',
                 ]);
             if($validate->fails())
@@ -108,7 +111,8 @@ class topicController extends Controller
                 }
             $topic = toipc::find($id);
             if($topic) {
-                $topic->Name = $request->name ;
+                $topic->name_en = $request->name_en;
+                $topic->name_ar = $request->name_ar;
                 $img = $this->getImage($request);
                 $topic->img = $img ;
                 $topic->save();
@@ -128,7 +132,7 @@ class topicController extends Controller
     {
         $search = request('topic');
         $topic = toipc::select()->where(function ($query) use ($search) {
-            $query->where('name', 'LIKE', '%' . $search . '%');
+            $query->where('name_'.app()->getLocale(), 'LIKE', '%' . $search . '%');
         })->paginate(PAGINATION_COUNTER);
         return response()->json([
             $topic,
